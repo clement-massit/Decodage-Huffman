@@ -1,120 +1,64 @@
-import java.io.BufferedReader;
-import java.io.File;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Scanner;
-
-
+import java.util.HashMap;
+import java.util.Map;
+import java.util.PriorityQueue;
 
 public class Huffman {
-	private static String text;
-	private static String caractere;
-	private static int freq;
+	private static final int ALPHABET_SIZE = 256;
 	
 	
-
-	public Huffman() {
-		
-		super();
+	
+	
+	private static Map<Character, String> buildLookupTable(final Node root){
+		final Map<Character, String> lookupTable = new HashMap<>();
+		buildLookupTableImpl(root, "", lookupTable);
+		return null;
 	}
-
-	public static String FileReader(String file) {
+	
+	private static void buildLookupTableImpl(final Node node, final String s, final Map<Character, String> lookupTable) {
 		
-		try {
-			  
-			File fis = new File(file);     //opens a connection to an actual file
-			Scanner myReader = new Scanner(fis);
-			System.out.println("file content: ");  
-			  
-			while (myReader.hasNextLine()) {
-				String data = myReader.nextLine();
-				
-				text += data;	
+		if (!node.is_leaf()) {
+			buildLookupTableImpl(node.getLeft(), s + "0", lookupTable);
+			buildLookupTableImpl(node.getRight(), s + "1", lookupTable);
+		} else {
+			lookupTable.put(node.getCharacter(), s);
+		}
+	}
+	
+	private static Node buidlHuffmanTree(int[] freq) {
+		final PriorityQueue<Node> priorityQueue = new PriorityQueue<>();
+		
+		for (char i = 0; i < ALPHABET_SIZE; i++) {
+			if (freq[i] > 0) {
+				priorityQueue.add(new Node(i, freq[i], null, null));
 			}
-			myReader.close();
 		}
-		catch (FileNotFoundException e) {
-			System.out.println("An error occurred.");
-		    e.printStackTrace();
-		}
-		return text;
-	}
-	
-	public static int count_char(String file) {
-		int nbr_char = 0;
-		try {  
-			 FileReader fil = new FileReader(file);
-		     BufferedReader buffer = new BufferedReader(fil);
-		     String line = buffer.readLine();
-		     nbr_char = Integer.parseInt(line);
-		     System.out.println(nbr_char);	
-		} 
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		return nbr_char;	
-	}
-	public static void get_content(String file) {
 		
-		ArrayList<Pair> array_line = new ArrayList<Pair>();
-		try {
-			final String SEPARATEUR = " ";
-			FileReader fil = new FileReader(file);
-			BufferedReader buffer = new BufferedReader(fil);
-			
-			String line = buffer.readLine();
-			StringBuffer sb = new StringBuffer();
-			
-			
-			while((line = buffer.readLine()) != null){
-				// ajoute la ligne au buffer
-				Pair pair = new Pair(caractere, freq);
-				String content[] = line.split(SEPARATEUR);
-				caractere = content[0];
-				freq = Integer.parseInt(content[1]);
-				pair.caractere = caractere;
-				pair.freq = freq;
-				array_line.add(pair);
-				
-				
-			}
-			//System.out.println(array_line);
-			System.out.println(array_line);
-		    fil.close();    
-			 
-			
-		} 
-		catch (IOException e) {
-			e.printStackTrace();
+		if (priorityQueue.size() == 1) {
+			priorityQueue.add(new Node('\0',1, null, null));
 		}
+		
+		while(priorityQueue.size() > 1) {
+			final Node left = priorityQueue.poll();
+			final Node right = priorityQueue.poll();
+			final Node parent = new Node('\0', left.getFreq() + right.getFreq(), left, right);
+			
+			priorityQueue.add(parent);
+		}
+		return priorityQueue.poll();
+	}
+	
+	public String decompress( ) {
+		
+		
+		return null;
+		
 	}
 	
 	
-	/*public int get_frequency(String file, int symbol) {
-		try {  
-			 FileReader fil = new FileReader(file);
-		     BufferedReader buffer = new BufferedReader(fil);
-		     String line = buffer.readLine();
-		     for 
-		} 
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		return symbol;
-		
-	}*/
 	
 	
-
+	
+	
+	
 }
-
-
-
