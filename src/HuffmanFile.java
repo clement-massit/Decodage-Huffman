@@ -15,37 +15,49 @@ import java.util.Scanner;
 
 
 public class HuffmanFile {
+	private File file;
 	private static String text;
 	private static String caractere;
 	private static int freq;
 	
 	
 
-	public HuffmanFile() {
-	
+	public HuffmanFile(File file) {
+		this.file = file;
 	}
 
-	public static String FileReader(String file) {
+	public List<String> FileReader() throws FileNotFoundException {		
+		String result = "";
+		ArrayList<String> list_alphabet = new ArrayList<String>();
+		    
+		Scanner myReader = new Scanner(this.file);
+	 
+		while (myReader.hasNextLine()) {
+			result = myReader.nextLine();	
+			list_alphabet.add(result);
+		}
 		
-		try {
-			  
-			File fis = new File(file);    
-			Scanner myReader = new Scanner(fis);
-			System.out.println("file content: ");  
-			  
-			while (myReader.hasNextLine()) {
-				String data = myReader.nextLine();
-				
-				text += data;	
-				
-			}
-			myReader.close();
+		myReader.close();
+		list_alphabet.remove(0);
+		
+		
+		return list_alphabet;
+	}
+	
+	public List<Node> transform_to_list_node(List<String> list_alphabet){
+		List<Node> list_nodes = new ArrayList<Node>();
+		String SEPARATEUR = " ";
+		for (String car : list_alphabet) {
+			Node node = new Node(caractere, freq);
+			String content[] = car.split(SEPARATEUR);
+			caractere = content[0];
+			freq = Integer.parseInt(content[1]);
+			node.setCharacter(caractere);
+			node.setFreq(freq);
+			list_nodes.add(node);			
 		}
-		catch (FileNotFoundException e) {
-			System.out.println("An error occurred.");
-		    e.printStackTrace();
-		}
-		return text;
+		return list_nodes;
+		
 	}
 	
 	public static int count_char(String file) {
@@ -58,61 +70,42 @@ public class HuffmanFile {
 		     System.out.println(nbr_char);	
 		     buffer.close();
 		} 
-		
 		catch (IOException e) {
 			e.printStackTrace();
 		}
 		return nbr_char;	
 	}
 	
-	/*
-	 * get the content from a txt file
-	 */
-	public static ArrayList get_content(String file) {
-		
-		ArrayList<Node> array_line = new ArrayList<Node>();
-		try {
-			final String SEPARATEUR = " ";
-			FileReader fil = new FileReader(file);
-			BufferedReader buffer = new BufferedReader(fil);
-			
-			String line = buffer.readLine();
-			StringBuffer sb = new StringBuffer();
-			
-			
-			while((line = buffer.readLine()) != null){
-				// ajoute la ligne au buffer
-				Node node = new Node(caractere, freq);
-				String content[] = line.split(SEPARATEUR);
-				caractere = content[0];
-				freq = Integer.parseInt(content[1]);
-				node.setCharacter(caractere);
-				node.setFreq(freq);
-				array_line.add(node);
-			}
-			
-			
-			//System.out.println(array_line);
-		    fil.close();    
-			 
-			
-		} 
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		return array_line;
-	}
 	
+	
+	
+	public char[] getBinaryChain(){
+        try {
+            String result = "";
+            Scanner myReader = new Scanner(this.file);
+            while(myReader.hasNextLine()) {
+                result += myReader.nextLine();
+            }
+            myReader.close();
+            return result.toCharArray();
+        
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+	 
 	/*
 	 * get the content of a bin file
 	 */
-	public static String get_bin_content(String f) {
+	public char[] get_bin_content() {
         FileInputStream fis = null;
         String bin = "";
         try {
-            fis = new FileInputStream(f);
+            fis = new FileInputStream(this.file);
             int i = 0;
             while ((i = fis.read()) != -1) {
+            	
             	bin += Integer.toBinaryString(i);
                 
             }
@@ -127,42 +120,10 @@ public class HuffmanFile {
                 }
             }
         }
-		return bin;
+		return bin.toCharArray();
     }
-	
-	/**
-	* renvoie la valeur d un string contenant une suite de 0 et de 1 en entier
-	* @param  converti String a convertir
-	* @return renvoie la representation du string en entier
-	*/
-	        
-    public static int StringToInt(String Converti){
-    	int convertiseur=0;
-    	for(int i=0;i<Converti.length();i++){
-    		if(Converti.charAt(i)=='0'){
-    			convertiseur=convertiseur*2;
-    		} 
-    		else{
-    			convertiseur=convertiseur*2+1;
-    		}
-    	}return convertiseur;
-    }
-    
-    
-    /**
-    * renvoie la valeur d un string contenant une suite de 0 et de 1 en entier
-    * @param  bit Bit a convertir
-    * @return renvoie la representation du l en entier en string
-    */
+		        
 
-    public static String BitToString(int bit){
-    	if(bit==0){
-    		return "0";
-    	} 
-    	else {
-    		return "1";
-    	}
-    }
 	
 	
 

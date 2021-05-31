@@ -1,15 +1,14 @@
 import java.util.ArrayList;
 
 public class Node implements Comparable<Node>{
-	private int value;
+	private String value;
 	private String character;
-    private int freq;
-    private final Node left;
-    private final Node right;
-    private ArrayList<Node> liste_node = new ArrayList<Node>();
+    private Integer freq;
+    private Node left;
+    private Node right;
     
     
-    public Node(String character, int freq) {
+    public Node(String character, Integer freq) {
     	this.freq = freq;
     	this.character = character;
     	left = null;
@@ -17,18 +16,25 @@ public class Node implements Comparable<Node>{
     }
 
 
-	public Node(Node right, Node left) {
+	public Node(Node left, Node right) {
 		this.right = right;
 		this.left = left;
+		this.freq = left.freq + right.freq;
 	}
 	
+	public Node(Node left, Node right, Integer freq) {
+    	this.freq = freq;
+    	this.right = right;
+		this.left = left;
+    }
 	
 	
-	public int getValue() {
+	
+	public String getValue() {
 		return value;
 	}
-	public void setValue(int value) {
-		this.value = value;
+	public void setValue(String string) {
+		this.value = string;
 	}
 	public String getCharacter() {
 		return character;
@@ -36,10 +42,10 @@ public class Node implements Comparable<Node>{
 	public void setCharacter(String character) {
 		this.character = character;
 	}
-	public int getFreq() {
+	public Integer getFreq() {
 		return freq;
 	}
-	public void setFreq(int freq) {
+	public void setFreq(Integer freq) {
 		this.freq = freq;
 	}
 	public Node getLeft() {
@@ -48,10 +54,16 @@ public class Node implements Comparable<Node>{
 	public Node getRight() {
 		return right;
 	}
+	public void setLeft(Node left) {
+		this.left = left;
+	}
+	public void setRight(Node right) {
+		this.right = right;
+	}
 
 
 	boolean is_leaf() {
-		return this.left == null && this.right == null;
+		return (this.left == null && this.right == null);
 	}
 
 	
@@ -63,8 +75,7 @@ public class Node implements Comparable<Node>{
 
 	@Override
 	public int compareTo(Node o) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.getFreq().compareTo(o.getFreq());
 	}
 	
 }
