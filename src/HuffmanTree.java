@@ -8,6 +8,9 @@ import java.util.Comparator;
 import java.util.List;
 
 public class HuffmanTree {
+	/*
+	 * this class is used to create the Huffman Tree in order to be traveled according to the algorithm
+	 */
 	private char valeur;
 	private Node root, current;
 
@@ -35,12 +38,15 @@ public class HuffmanTree {
 	}
 
 	public void create_tree(List<Node> list_nodes) {
-		System.out.println(list_nodes);
+		/*
+		 * @param list_nodes is a list of nodes in which each node is composed like 'Character  Frequence'
+		 */
+		
 		while (list_nodes.size() > 1) {
 			Collections.sort(list_nodes);
 			list_nodes.add(new Node(list_nodes.remove(0), list_nodes.remove(0)));
 			
-			System.out.println(list_nodes);
+			//System.out.println(list_nodes);
 		}
 		this.current = list_nodes.get(0);
 		this.root = list_nodes.get(0);

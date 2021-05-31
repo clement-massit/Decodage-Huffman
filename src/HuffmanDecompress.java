@@ -4,35 +4,41 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class HuffmanDecompress {	
+	/*
+	 * this class will decompress the binary code 'chain_bin' to a String travelling the 
+	 * tree created in HuffmanTree.
+	 */
 
 	public HuffmanDecompress() {	
 	}
 		
-	public static String decompress(char[] chain_bin, HuffmanTree arbre) {
+	public static String decompress(char[] chain_bin, HuffmanTree tree) {
+		/*
+		 * @param chain_bin is the binary code found when a file is opened, like '011001010000111';
+		 * tree is the tree created in HuffmanTree in order to be traveled to find the corresponding message
+		 */
 		
-		
-		System.out.println(chain_bin);
 		String result = "";
 		
 		for(char binary: chain_bin) {	
 			
-			Node current = arbre.getCurrent();
+			Node current = tree.getCurrent();
 
 			if (current.is_leaf()) {
 				result += current.getCharacter();
-				arbre.setCurrent(arbre.getRoot());
+				tree.setCurrent(tree.getRoot());
 			}
 			
 			if (binary == "0".charAt(0)){
-				arbre.setCurrent(arbre.getCurrent().getLeft());
+				tree.setCurrent(tree.getCurrent().getLeft());
 			} else {
-				arbre.setCurrent(arbre.getCurrent().getRight());	
+				tree.setCurrent(tree.getCurrent().getRight());	
 			}			
 		}
 		
-		if (arbre.getCurrent().is_leaf()) {
-			result += arbre.getCurrent().getCharacter();
-			arbre.setCurrent(arbre.getRoot());
+		if (tree.getCurrent().is_leaf()) {
+			result += tree.getCurrent().getCharacter();
+			tree.setCurrent(tree.getRoot());
 		}
 		return result;
 

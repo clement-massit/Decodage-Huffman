@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 
 public class Node implements Comparable<Node>{
+	/*
+	 * Implements the creation of Nodes used in the Huffman Tree
+	 */
 	private String value;
 	private String character;
     private Integer freq;

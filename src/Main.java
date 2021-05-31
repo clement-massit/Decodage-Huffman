@@ -13,7 +13,7 @@ public class Main {
 		File file = new File("test/exemple_freq.txt");
 		HuffmanFile freq_file = new HuffmanFile(file);
 
-		arbre.create_tree(freq_file.transform_to_list_node(freq_file.FileReader()));
+		arbre.create_tree(freq_file.transform_to_list_node(freq_file.Freq_File_Reader()));
 		
 
 		File file_to_decompress = new File("test/exemple_comp.txt");

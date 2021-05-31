@@ -15,6 +15,9 @@ import java.util.Scanner;
 
 
 public class HuffmanFile {
+	/*
+	 * This class allows the opening of files and getting their content
+	 */
 	private File file;
 	private static String text;
 	private static String caractere;
@@ -26,7 +29,13 @@ public class HuffmanFile {
 		this.file = file;
 	}
 
-	public List<String> FileReader() throws FileNotFoundException {		
+	public List<String> Freq_File_Reader() throws FileNotFoundException {	
+		/*
+		 * this function is used in order to read a file composed of alphabet and freqences 
+		 * that the text compressed uses.
+		 * 
+		 * It returns a list of String like '[a 2, e 5, t 3,...]'
+		 */
 		String result = "";
 		ArrayList<String> list_alphabet = new ArrayList<String>();
 		    
@@ -45,6 +54,12 @@ public class HuffmanFile {
 	}
 	
 	public List<Node> transform_to_list_node(List<String> list_alphabet){
+		/*
+		 * this is function transforms a list of String into a list of Nodes object.
+		 * It appears like the list of String : '[a 2, e 5, t 3,...]', but each values is a Nodes object.
+		 * 
+		 * @param list_alphabet : a list of String
+		 */
 		List<Node> list_nodes = new ArrayList<Node>();
 		String SEPARATEUR = " ";
 		for (String car : list_alphabet) {
@@ -59,27 +74,11 @@ public class HuffmanFile {
 		return list_nodes;
 		
 	}
-	
-	public static int count_char(String file) {
-		int nbr_char = 0;
-		try {  
-			 FileReader fil = new FileReader(file);
-		     BufferedReader buffer = new BufferedReader(fil);
-		     String line = buffer.readLine();
-		     nbr_char = Integer.parseInt(line);
-		     System.out.println(nbr_char);	
-		     buffer.close();
-		} 
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-		return nbr_char;	
-	}
-	
-	
-	
-	
+		
 	public char[] getBinaryChain(){
+		/*
+		 * this function gets the content of a file and especially txt files.
+		 */
         try {
             String result = "";
             Scanner myReader = new Scanner(this.file);
@@ -95,10 +94,10 @@ public class HuffmanFile {
         return null;
     }
 	 
-	/*
-	 * get the content of a bin file
-	 */
 	public char[] get_bin_content() {
+		/*
+		 * this function gets the content of a BIN file.
+		 */
         FileInputStream fis = null;
         String bin = "";
         try {
