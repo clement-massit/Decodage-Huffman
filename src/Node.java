@@ -20,6 +20,7 @@ public class Node implements Comparable<Node>{
 
 
 	public Node(Node left, Node right) {
+		this.character = "";
 		this.right = right;
 		this.left = left;
 		this.freq = left.freq + right.freq;
@@ -78,7 +79,14 @@ public class Node implements Comparable<Node>{
 
 	@Override
 	public int compareTo(Node o) {
-		return this.getFreq().compareTo(o.getFreq());
+		if (this.freq == o.freq) {
+			return this.character.compareTo(o.character);
+		}else {
+			return this.getFreq().compareTo(o.getFreq());
+		}
+		
 	}
+	
+
 	
 }
