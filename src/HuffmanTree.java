@@ -46,7 +46,6 @@ public class HuffmanTree {
 			Collections.sort(list_nodes);
 			list_nodes.add(new Node(list_nodes.remove(0), list_nodes.remove(0)));
 			
-			//System.out.println(list_nodes);
 		}
 		this.current = list_nodes.get(0);
 		this.root = list_nodes.get(0);
