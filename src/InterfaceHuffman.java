@@ -25,7 +25,7 @@ public class InterfaceHuffman {
 	private final JLabel Label_files_content = new JLabel();
 	private final JLabel text_decompressed = new JLabel();
 	private final JButton btnNewButton = new JButton("Fermer");
-	private final JLabel lblNewLabel = new JLabel("Veuillez s\u00E9lectionner d'abord le fichier compress\u00E9 puis le fichier fr\u00E9quences");
+	private final JLabel lblNewLabel = new JLabel("Please choose the compressed file first and then choose the freq file");
 	
 
 	/**
@@ -64,11 +64,12 @@ public class InterfaceHuffman {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		menuBar.setForeground(new Color(51, 153, 204));
 		frame.setJMenuBar(menuBar);
+		selected_file.setHorizontalAlignment(SwingConstants.CENTER);
 		selected_file.setForeground(Color.WHITE);
 		
 		selected_file.setFont(new Font("Verdana Pro", Font.PLAIN, 16));
 		selected_file.setBackground(Color.WHITE);
-		selected_file.setBounds(35, 42, 545, 80);
+		selected_file.setBounds(0, 42, 611, 80);
 		selected_file.setVisible(false);
 		
 		btnOpenFile.setFont(new Font("Verdana Pro", Font.PLAIN, 10));
@@ -76,13 +77,13 @@ public class InterfaceHuffman {
 	
 		Label_files_content.setHorizontalAlignment(SwingConstants.CENTER);
 		Label_files_content.setBackground(new Color(102, 102, 153));
-		Label_files_content.setBounds(0, 145, 591, 52);
+		Label_files_content.setBounds(0, 145, 611, 52);
 		Label_files_content.setFont(new Font("Verdana Pro", Font.PLAIN, 16));
 		text_decompressed.setForeground(Color.WHITE);
 		
 		
 		text_decompressed.setBackground(new Color(102, 102, 153));
-		text_decompressed.setFont(new Font("Verdana Pro", Font.PLAIN, 16));
+		text_decompressed.setFont(new Font("Verdana Pro", Font.BOLD, 20));
 		text_decompressed.setHorizontalAlignment(SwingConstants.CENTER);
 		text_decompressed.setBounds(0, 207, 591, 45);
 		
@@ -131,7 +132,8 @@ public class InterfaceHuffman {
 		});
 		btnNewButton.setFont(new Font("Verdana Pro", Font.PLAIN, 10));
 		btnNewButton.setBounds(489, 330, 100, 21);
-		lblNewLabel.setFont(new Font("Verdana Pro", Font.PLAIN, 13));
+		lblNewLabel.setForeground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Verdana Pro", Font.BOLD | Font.ITALIC, 13));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(0, 10, 611, 45);
 		
