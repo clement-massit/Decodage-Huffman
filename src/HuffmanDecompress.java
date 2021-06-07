@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class HuffmanDecompress {	
+	private static int i = 0;
 	/*
 	 * this class will decompress the binary code 'chain_bin' to a String travelling the 
 	 * tree created in HuffmanTree.
@@ -40,13 +41,20 @@ public class HuffmanDecompress {
 			result += tree.getCurrent().getCharacter();
 			tree.setCurrent(tree.getRoot());
 		}
+		System.out.println(result);
 		return result;
 
 	}
 	
 	public static void write_text_decompressed(String text_decompressed) {
+		/*
+		 * @param String text_decompress is a string, it will be written 
+		 * in a txt file named : text_decompressed
+		 */
 		try {
-			File file = new File("text_decompressed.txt");
+			i++;
+			File file = new File("test/Results/" + "text_decompressed_" + String.valueOf(i) + ".txt");
+			System.out.println(file.getName());
 			if (!file.exists()) {
 				file.createNewFile();
 			}
