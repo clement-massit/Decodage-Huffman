@@ -40,6 +40,12 @@ public class HuffmanTree {
 	public void create_tree(List<Node> list_nodes) {
 		/*
 		 * @param list_nodes is a list of nodes in which each node is composed like 'Character  Frequence'
+		 * 
+		 * while the list of nodes is composed of at least 1 node 
+		 * sort the list using 'CompareTo' method (method from Node class)
+		 * then we add the two firsts element of the list and we set these Nodes 
+		 * as the left & right child of the node created.
+		 * Finally we set the current node and the root as the same node (when we create the tree it returns only the root)
 		 */
 		
 		while (list_nodes.size() > 1) {

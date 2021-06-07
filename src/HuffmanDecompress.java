@@ -17,6 +17,11 @@ public class HuffmanDecompress {
 		/*
 		 * @param chain_bin is the binary code found when a file is opened, like '011001010000111';
 		 * tree is the tree created in HuffmanTree in order to be traveled to find the corresponding message
+		 * 
+		 * for each value in the binary chain we run through the three and move to left if there is a '0'
+		 * or move to right if there is a '1'.
+		 * then if we arrive on a leaf, we can get the corresponding character with the leaf and then 
+		 * we set the current node to root of the tree.
 		 */
 		
 		String result = "";
@@ -41,7 +46,7 @@ public class HuffmanDecompress {
 			result += tree.getCurrent().getCharacter();
 			tree.setCurrent(tree.getRoot());
 		}
-		System.out.println(result);
+		
 		return result;
 
 	}
@@ -50,12 +55,20 @@ public class HuffmanDecompress {
 		/*
 		 * @param String text_decompress is a string, it will be written 
 		 * in a txt file named : text_decompressed
+		 * 
+		 * create a new file in the following path
+		 * if the file exists or not the previous one is deleted and replaced by the new one
+		 * then write in the new file the following String : 'text_decompressed'
 		 */
 		try {
 			i++;
 			File file = new File("test/Results/" + "text_decompressed_" + String.valueOf(i) + ".txt");
-			System.out.println(file.getName());
+			
 			if (!file.exists()) {
+				file.createNewFile();
+			}
+			if (file.exists()) {
+				file.delete();
 				file.createNewFile();
 			}
 			

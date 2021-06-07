@@ -59,6 +59,8 @@ public class HuffmanFile {
 		 * It appears like the list of String : '[a 2, e 5, t 3,...]', but each values is a Nodes object.
 		 * 
 		 * @param list_alphabet : a list of String
+		 * 
+		 * set the freq & character of each node by each elements in the list
 		 */
 		List<Node> list_nodes = new ArrayList<Node>();
 		String SEPARATEUR = " ";
@@ -71,13 +73,14 @@ public class HuffmanFile {
 			node.setFreq(freq);
 			list_nodes.add(node);			
 		}
-		return list_nodes;
+		return list_nodes; // the return is composed of a nodes list 
 		
 	}
 		
 	public char[] getBinaryChain(){
 		/*
 		 * this function gets the content of a file and especially txt files.
+		 * 
 		 */
         try {
             String result = "";
@@ -86,7 +89,7 @@ public class HuffmanFile {
                 result += myReader.nextLine();
             }
             myReader.close();
-            return result.toCharArray();
+            return result.toCharArray(); // the return is a char[] composed of 0 and 1
         
         } catch (IOException e) {
             e.printStackTrace();
@@ -97,6 +100,7 @@ public class HuffmanFile {
 	public char[] get_bin_content() {
 		/*
 		 * this function gets the content of a BIN file.
+		 * needs to be improved
 		 */
         FileInputStream fis = null;
         String bin = "";
