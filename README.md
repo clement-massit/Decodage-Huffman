@@ -6,7 +6,11 @@ A graphic interface make the visual result easier.
 1. [How to install](#How-to-install)  
 2. [Usage](#Usage)  
 3. [Milestones of the project](#Milestones-of-the-project)  
-4. [Execution](#Execution)
+4. [Execution](#Execution)  
+
+## Made with  
+* [Java](#https://www.java.com/fr/)  
+* [Eclipse - Java IDE](#https://www.eclipse.org/)
 
 ## How to install  
 Clone the repository : 
@@ -60,7 +64,9 @@ __*4th step*__ decompress the message
 Then the program will read through the previous tree, and return the text decompressed 
 ```
 bonjour
-```
-
+```  
+## Authors
+MASSIT Clément alias @clement-massit  
+Read the list of contributors to see who helped with the project!
 
 
