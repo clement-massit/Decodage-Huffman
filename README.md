@@ -2,6 +2,11 @@
 This Huffman Project is a java project in order to decompress data with the Huffman Algorithm.  
 A graphic interface make the visual result easier.  
 
+## Table of Contents
+1. [How to install](#How-to-install)  
+2. [Usage](#Usage)  
+3. [Milestones of the project](#Milestones-of-the-project)  
+
 ## How to install  
 Clone the repository : 
 ```
