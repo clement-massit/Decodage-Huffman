@@ -1,8 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
 
@@ -10,7 +7,6 @@ public class Main {
 		
 		InterfaceHuffman interface_huffman = new InterfaceHuffman();
 		interface_huffman.main(null);
-		
 	}
 
 }
