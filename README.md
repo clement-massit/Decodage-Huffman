@@ -65,8 +65,3 @@ Then the program will read through the previous tree, and return the text decomp
 ```
 bonjour
 ```  
-## Authors
-MASSIT Clément alias @clement-massit
-Read the list of contributors to see who helped with the project!
-
-
