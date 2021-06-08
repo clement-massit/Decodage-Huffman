@@ -6,6 +6,7 @@ A graphic interface make the visual result easier.
 1. [How to install](#How-to-install)  
 2. [Usage](#Usage)  
 3. [Milestones of the project](#Milestones-of-the-project)  
+4. [Execution](#Execution)
 
 ## How to install  
 Clone the repository : 
@@ -33,6 +34,33 @@ Finally you will see on the frame all information concerning the decompression o
 6. Huffman Tree implementation (based on frequences of characters)
 7. How to run through the Huffman Tree in order to obtain the decompression of compressed text
 8. Write the decompressed text in a file 
-9. Implement a graphic interface in order to make a visual result
+9. Implement a graphic interface in order to make a visual result  
+
+## Execution  
+__*1st step*__ open a file contains a binary chain  
+```
+010111000111100101
+```
+
+__*2nd step*__ open a file contains the frequences and alphabet  
+```
+6
+b 1
+j 1
+n 1
+u 1
+r 1
+o 2
+```
+__*3rd step*__ tree creation   
+The program will create the following Huffman tree :  
+![image](https://user-images.githubusercontent.com/72502592/121139006-934db800-c838-11eb-8d80-5ff602e2bd44.png)  
+
+__*4th step*__ decompress the message  
+Then the program will read through the previous tree, and return the text decompressed 
+```
+bonjour
+```
+
 
 
