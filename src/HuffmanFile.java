@@ -89,7 +89,8 @@ public class HuffmanFile {
                 result += myReader.nextLine();
             }
             myReader.close();
-            return result.toCharArray(); // the return is a char[] composed of 0 and 1
+            // the return is a char[] composed of 0 and 1
+            return result.toCharArray(); 
         
         } catch (IOException e) {
             e.printStackTrace();
