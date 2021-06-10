@@ -27,8 +27,9 @@ The program needs two kind of files :
   
   
 It can be txt files.  
+There is a jar file that allows you to launch the application.  
 Launch the application and click on 'open' button.  
-You have to open the compressed file first. Then a second file chooser window will be opened and you have to choose the frequences file.
+You have to choose the compressed file first. Then a second file chooser window will be opened and you have to choose the frequences file.
 Finally you will see on the frame all information concerning the decompression of the file. 
 
 ## Milestones of the project  
