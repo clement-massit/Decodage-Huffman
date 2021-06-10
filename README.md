@@ -1,3 +1,5 @@
+[![forthebadge](https://forthebadge.com/images/badges/made-with-java.svg)](https://forthebadge.com)
+
 # Decodage-Huffman  
 This Huffman Project is a java project in order to decompress data with the Huffman Algorithm.  
 A graphic interface make the visual result easier.  
